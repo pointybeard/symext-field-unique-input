@@ -126,13 +126,41 @@
 			
 			if($this->get('auto_unique') == 'yes' && !$this->__isHandleUnique($handle, $entry_id)){
 				
-				$count = 2;
-
-				while((bool)$this->_engine->Database->fetchVar('id', 0, "SELECT `id` FROM `tbl_entries_data_" . $this->get('id') . "` WHERE `handle` = '$handle-$count' LIMIT 1 ")){
-					$count++;
+				$existing = NULL;
+				
+				## First, check to see if the handle even needs to change
+				if(!is_null($entry_id)){
+				
+					$existing = $this->_engine->Database->fetchRow(0, "
+						SELECT `id`, `value`, `handle` 
+						FROM `tbl_entries_data_" . $this->get('id') . "` 
+						WHERE `value` = '".General::sanitize($data)."'
+						AND `entry_id` = {$entry_id}
+						LIMIT 1
+					");
+	
 				}
 				
-				$handle = "$handle-$count";
+				## Either this is a new entry, or the value has changed 
+				## enough to generate a new handle
+				if(is_null($existing)){
+					$count = 2;
+
+					while((bool)$this->_engine->Database->fetchVar('id', 0, "
+							SELECT `id` 
+							FROM `tbl_entries_data_" . $this->get('id') . "` 
+							WHERE `handle` = '$handle-$count'
+							".(!is_null($entry_id) ? " AND `entry_id` != {$entry_id} " : NULL)."
+							LIMIT 1 ")){
+							
+						$count++;
+					}
+				
+					$handle = "$handle-$count";
+				}
+				
+				## Use the existing handle, since nothing has changed
+				else $handle = $existing['handle'];
 			}
 			
 			$result = array(

@@ -2,7 +2,7 @@
 Field: Unique Text Input
 ------------------------------------
 
-Version: 1.2
+Version: 1.3
 Author: Symphony Team (team@symphony21.com)
 Build Date: 17th October 2008
 Requirements: Symphony Beta revision 5 or greater.
@@ -24,3 +24,8 @@ Requirements: Symphony Beta revision 5 or greater.
 
 - Two modes allow you to choose between throwing an error, "This must be unique", or attempting 
   to make the handle unique automatically by appending an number, E.G. "my-entry-handle-2"
+
+
+[CHANGE LOG]
+
+1.3 	- Fixed logic behind automatically creating unique handles.
