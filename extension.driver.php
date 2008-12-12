@@ -19,7 +19,7 @@
 
 		public function install(){
 
-			return $this->_Parent->Database->query("CREATE TABLE `tbl_fields_uniqueinput` (
+			return (bool)$this->_Parent->Database->query("CREATE TABLE `tbl_fields_uniqueinput` (
 				  `id` int(11) unsigned NOT NULL auto_increment,
 				  `field_id` int(11) unsigned NOT NULL,
 				  `validator` varchar(100) default NULL,

@@ -4,7 +4,7 @@ Field: Unique Text Input
 
 Version: 1.3
 Author: Symphony Team (team@symphony21.com)
-Build Date: 17th October 2008
+Build Date: 12th December 2008
 Requirements: Symphony Beta revision 5 or greater.
 
 
