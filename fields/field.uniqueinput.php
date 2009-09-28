@@ -143,7 +143,7 @@
 				
 				## Either this is a new entry, or the value has changed 
 				## enough to generate a new handle
-				if(is_null($existing)){
+				if(is_null($existing) || is_null($existing['handle'])){
 					$count = 2;
 
 					while((bool)$this->_engine->Database->fetchVar('id', 0, "
