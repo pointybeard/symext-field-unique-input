@@ -165,7 +165,7 @@
 			
 			$result = array(
 				'handle' => $handle,
-				'value' => General::sanitize($data),
+				'value' => $data,
 			);
 
 			return $result;
@@ -178,7 +178,7 @@
 		function appendFormattedElement(&$wrapper, $data, $encode=false){
 			
 			if($this->get('apply_formatting') == 'yes' && isset($data['value_formatted'])) $value = $data['value_formatted'];
-			else $value = $data['value'];
+			else $value = General::sanitize($data['value']);
 			
 			$wrapper->appendChild(new XMLElement($this->get('element_name'), ($encode ? General::sanitize($value) : $value), array('handle' => $data['handle'])));
 		}
