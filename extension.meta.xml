@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension id="uniqueinputfield" status="released" xmlns="http://symphony-cms.com/schemas/extension/1.0">
+	<name>Unique Text Input Field</name>
+	<description>Force unique values or handles</description>
+	<repo type="github">https://github.com/symphonycms/uniqueinputfield</repo>
+	<url type="discuss">http://symphony-cms.com/discuss/thread/269/</url>
+	<types>
+		<type>Field Types</type>
+	</types>
+	<authors>
+		<author>
+			<name github="symphonycms" symphony="team">Symphony Team</name>
+			<website>http://symphony-cms.com</website>
+		</author>
+	</authors>
+	<releases>
+		<release version="1.4" date="2011-12-17" min="2.0.6" max='2.2.x'>
+			- Updated for Symphony 2.2 compatibility
+		</release>
+		<release version="1.3" date="2008-12-12" min="2.0">
+			- Fixed logic behind automatically creating unique handles.
+		</release>
+	</releases>
+</extension>
