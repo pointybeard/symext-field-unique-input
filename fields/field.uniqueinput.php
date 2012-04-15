@@ -6,8 +6,8 @@
 
 	Class fieldUniqueInput extends Field{
 
-		function __construct(&$parent){
-			parent::__construct($parent);
+		function __construct(){
+			parent::__construct();
 			$this->_name = 'Unique Text Input';
 			$this->_required = true;
 
@@ -116,7 +116,7 @@
 
 		}
 
-		function processRawFieldData($data, &$status, $simulate=false, $entry_id=NULL){
+		function processRawFieldData($data, &$status, &$message=null, $simulate=false, $entry_id=NULL){
 
 			if(trim($data) == '') return array();
 
