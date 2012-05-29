@@ -75,22 +75,25 @@
 			$handle = Lang::createHandle($data);
 
 			if($this->get('required') == 'yes' && strlen($data) == 0){
-				$message = "'". $this->get('label')."' is a required field.";
+				$message = __('‘%s’ is a required field.', array($this->get('label')));
 				return self::__MISSING_FIELDS__;
 			}
 
 			if(!$this->__applyValidationRules($data)){
-				$message = "'". $this->get('label')."' contains invalid data. Please check the contents.";
+				$message = __('‘%s’ contains invalid data. Please check the contents.', array($this->get('label')));
 				return self::__INVALID_FIELDS__;
 			}
 
 			if($this->get('auto_unique') != 'yes' && !$this->__isHandleUnique($handle, $entry_id)){
-				$message = 'Value must be unique.';
+				$message = __('Value must be unique.');
 				return self::__INVALID_FIELDS__;
 			}
 
 			if(!General::validateXML(General::sanitize($data), $errors, false, new XsltProcess)){
-				$message = "'". $this->get('label')."' contains invalid XML. The following error was returned: <code>" . $errors[0]['message'] . '</code>';
+				$message = __('‘%s’ contains invalid XML. The following error was returned: %s', array(
+					$this->get('label'),
+					'<code>' . $errors[0]['message'] . '</code>'
+				));
 				return self::__INVALID_FIELDS__;
 			}
 
@@ -106,9 +109,8 @@
 			if($this->get('auto_unique') == 'yes' && !$this->__isHandleUnique($handle, $entry_id)){
 				$existing = NULL;
 
-				## First, check to see if the handle even needs to change
+				// First, check to see if the handle even needs to change
 				if(!is_null($entry_id)){
-
 					$existing = Symphony::Database()->fetchRow(0, "
 						SELECT `id`, `value`, `handle`
 						FROM `tbl_entries_data_" . $this->get('id') . "`
@@ -116,11 +118,10 @@
 						AND `entry_id` = {$entry_id}
 						LIMIT 1
 					");
-
 				}
 
-				## Either this is a new entry, or the value has changed
-				## enough to generate a new handle
+				// Either this is a new entry, or the value has changed
+				// enough to generate a new handle
 				if(is_null($existing) || is_null($existing['handle'])){
 					$count = 2;
 
@@ -137,7 +138,7 @@
 					$handle = "$handle-$count";
 				}
 
-				## Use the existing handle, since nothing has changed
+				// Use the existing handle, since nothing has changed
 				else $handle = $existing['handle'];
 			}
 
