@@ -27,7 +27,7 @@
 		Utilities:
 	-------------------------------------------------------------------------*/
 
-		public function __isHandleUnique($handle, $self_entry_id=NULL){
+		public function isHandleUnique($handle, $self_entry_id=NULL){
 			return !(bool)Symphony::Database()->fetchVar('id', 0, "SELECT `id` FROM `tbl_entries_data_" . $this->get('id') . "` WHERE `handle` = '$handle' ".(is_numeric($self_entry_id) ? " AND `entry_id` != $self_entry_id " : NULL) . "LIMIT 1");
 		}
 
@@ -72,19 +72,15 @@
 	-------------------------------------------------------------------------*/
 
 		public function checkPostFieldData($data, &$message = null, $entry_id = null){
+			$status = parent::checkPostFieldData($data, $message, $entry_id);
+
+			if($status !== self::__OK__) {
+				return $status;
+			}
+
 			$handle = Lang::createHandle($data);
 
-			if($this->get('required') == 'yes' && strlen($data) == 0){
-				$message = __('‘%s’ is a required field.', array($this->get('label')));
-				return self::__MISSING_FIELDS__;
-			}
-
-			if(!$this->__applyValidationRules($data)){
-				$message = __('‘%s’ contains invalid data. Please check the contents.', array($this->get('label')));
-				return self::__INVALID_FIELDS__;
-			}
-
-			if($this->get('auto_unique') != 'yes' && !$this->__isHandleUnique($handle, $entry_id)){
+			if($this->get('auto_unique') != 'yes' && !$this->isHandleUnique($handle, $entry_id)){
 				$message = __('Value must be unique.');
 				return self::__INVALID_FIELDS__;
 			}
@@ -106,7 +102,7 @@
 			$status = self::__OK__;
 			$handle = Lang::createHandle($data);
 
-			if($this->get('auto_unique') == 'yes' && !$this->__isHandleUnique($handle, $entry_id)){
+			if($this->get('auto_unique') == 'yes' && !$this->isHandleUnique($handle, $entry_id)){
 				$existing = NULL;
 
 				// First, check to see if the handle even needs to change
