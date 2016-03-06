@@ -1,10 +1,6 @@
 # Field: Unique Text Input
 
-- Version: 1.5
-- Author: Symphony Team (team@symphony-cms.com)
-- Build Date: 29th May 2012
-- Requirements: Symphony 2.3+
-
+Makes the value unique across the section
 
 ## Installation
 
