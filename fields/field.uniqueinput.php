@@ -27,7 +27,7 @@
 		Utilities:
 	-------------------------------------------------------------------------*/
 
-		public function isHandleUnique($handle, $self_entry_id=NULL){
+		public function isHandleUnique($handle, $self_entry_id = null){
 			return !(bool)Symphony::Database()->fetchVar('id', 0, "SELECT `id` FROM `tbl_entries_data_" . $this->get('id') . "` WHERE `handle` = '$handle' ".(is_numeric($self_entry_id) ? " AND `entry_id` != $self_entry_id " : NULL) . "LIMIT 1");
 		}
 
@@ -97,7 +97,9 @@
 		}
 
 		public function processRawFieldData($data, &$status, &$message=null, $simulate=false, $entry_id=NULL){
-			if(trim($data) == '') return array();
+			if(trim($data) == '') {
+				return array();
+			}
 
 			$status = self::__OK__;
 			$handle = Lang::createHandle($data);
@@ -135,7 +137,9 @@
 				}
 
 				// Use the existing handle, since nothing has changed
-				else $handle = $existing['handle'];
+				else {
+					$handle = $existing['handle'];
+				}
 			}
 
 			$result = array(
