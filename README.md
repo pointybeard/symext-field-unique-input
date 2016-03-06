@@ -1,6 +1,6 @@
 # Field: Unique Text Input
 
-Makes the value unique across the section
+Makes the value's handle unique across the section
 
 ## Installation
 
@@ -13,6 +13,6 @@ Makes the value unique across the section
 
 ## Usage
 
-- Behaves identically to a normal text input, however it enforces uniqueness and you cannot group the output in Data Sources.
+- Behaves identically to a normal text input, however it enforces uniqueness of the handle and you cannot group the output in Data Sources.
 
 - Two modes allow you to choose between throwing an error, "This must be unique", or attempting to make the handle unique automatically by appending an number, eg. `my-entry-handle-2`
