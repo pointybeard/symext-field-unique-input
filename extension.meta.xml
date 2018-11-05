@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<extension id="uniqueinputfield" status="released" xmlns="http://symphony-cms.com/schemas/extension/1.0">
+<extension id="uniqueinputfield" status="released" xmlns="http://getsymphony.com/schemas/extension/1.0">
 	<name>Unique Text Input Field</name>
 	<description>Force unique handles</description>
 	<repo type="github">https://github.com/symphonycms/uniqueinputfield</repo>
-	<url type="discuss">http://www.getsymphony.com/discuss/thread/269/</url>
+	<url type="discuss">https://www.getsymphony.com/discuss/thread/269/</url>
 	<types>
 		<type>Field Types</type>
 		<type>Unique</type>
@@ -11,10 +11,13 @@
 	<authors>
 		<author>
 			<name github="symphonycms" symphony="team">Symphony Team</name>
-			<website>http://www.getsymphony.com/</website>
+			<website>https://www.getsymphony.com/</website>
 		</author>
 	</authors>
 	<releases>
+		<release version="1.5.3" date="2018-11-05" min="2.3" max="2.x.x">
+			- Fix two SQLi vulnerabilities (reported privately)
+		</release>
 		<release version="1.5.2" date="2016-03-06" min="2.3" max="2.x.x">
 			- Updated documentation and description to better represent the actual behavior
 		</release>
