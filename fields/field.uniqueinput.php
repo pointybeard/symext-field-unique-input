@@ -39,8 +39,7 @@
 		public function displaySettingsPanel(XMLElement &$wrapper, $errors = null) {
 			parent::displaySettingsPanel($wrapper, $errors);
 
-			$div = new XMLElement('div');
-			$div->setAttribute('class', 'frame');
+			$div = new XMLElement('fieldset');
 
 			$label = Widget::Label();
 			$input = Widget::Input('fields['.$this->get('sortorder').'][auto_unique]', 'yes', 'checkbox');
