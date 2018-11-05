@@ -28,6 +28,7 @@
 	-------------------------------------------------------------------------*/
 
 		public function isHandleUnique($handle, $self_entry_id = null){
+			$handle = Symphony::Database()->cleanValue($handle);
 			return !(bool)Symphony::Database()->fetchVar('id', 0, "SELECT `id` FROM `tbl_entries_data_" . $this->get('id') . "` WHERE `handle` = '$handle' ".(is_numeric($self_entry_id) ? " AND `entry_id` != $self_entry_id " : NULL) . "LIMIT 1");
 		}
 
@@ -106,13 +107,14 @@
 
 			if($this->get('auto_unique') == 'yes' && !$this->isHandleUnique($handle, $entry_id)){
 				$existing = NULL;
+				$safeData = Symphony::Database()->cleanValue($data);
 
 				// First, check to see if the handle even needs to change
 				if(!is_null($entry_id)){
 					$existing = Symphony::Database()->fetchRow(0, "
 						SELECT `id`, `value`, `handle`
 						FROM `tbl_entries_data_" . $this->get('id') . "`
-						WHERE `value` = '".General::sanitize($data)."'
+						WHERE `value` = '{$safeData}'
 						AND `entry_id` = {$entry_id}
 						LIMIT 1
 					");
