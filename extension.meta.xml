@@ -15,6 +15,9 @@
 		</author>
 	</authors>
 	<releases>
+		<release version="1.5.4" date="2018-11-05" min="2.3" max="2.x.x">
+			- Fix UI issue with the field's frame (#11)
+		</release>
 		<release version="1.5.3" date="2018-11-05" min="2.3" max="2.x.x">
 			- Fix two SQLi vulnerabilities (reported privately)
 		</release>
