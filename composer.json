@@ -1,0 +1,58 @@
+ {
+    "name": "pointybeard/symext-field-unique-input",
+    "description": "A field for Symphony CMS that enforces uniqueness",
+    "homepage": "https://github.com/pointybeard/symext-field-unique-input",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "keywords": [
+        "php",
+        "field",
+        "symphony",
+        "symphonycms",
+        "symphony field",
+        "symphony extension",
+        "symphonycms field",
+        "symphonycms extension"
+    ],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Alannah Kearney",
+            "email": "hi@alannahkearney.com",
+            "homepage": "http://alannahkearney.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/pointybeard/symext-field-unique-input/issues"
+    },
+    "require": {
+        "php": ">=7.4",
+        "pointybeard/helpers": "^1.2.0",
+        "pointybeard/symphony-extended": "^1.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "damianopetrungaro/php-commitizen": "^0.1.2",
+        "php-parallel-lint/php-parallel-lint": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "pointybeard\\Symphony\\Extensions\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": "mkdir -p fields",
+        "tidy": "php-cs-fixer fix --config=.php_cs.dist -v --using-cache=no",
+        "tidyDry": "@tidy --dry-run",
+        "test": [
+            "parallel-lint . --exclude vendor"
+        ],
+        "clean": "rm -rf fields"
+    },
+    "config": {
+        "sort-packages": true,
+        "process-timeout": 0
+    }
+}

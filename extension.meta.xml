@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<extension id="uniqueinputfield" status="released" xmlns="http://getsymphony.com/schemas/extension/1.0">
+<extension id="field_uniquetextinput" status="released" xmlns="http://getsymphony.com/schemas/extension/1.0">
 	<name>Unique Text Input Field</name>
-	<description>Force unique handles</description>
-	<repo type="github">https://github.com/symphonycms/uniqueinputfield</repo>
+	<description>A field for Symphony CMS that enforces uniqueness</description>
+	<repo type="github">https://github.com/pointybeard/symext-field-unique-input</repo>
 	<url type="discuss">https://www.getsymphony.com/discuss/thread/269/</url>
 	<types>
 		<type>Field Types</type>
@@ -10,11 +10,16 @@
 	</types>
 	<authors>
 		<author>
+            <name github="pointybeard">Alannah Kearney</name>
+            <website>http://www.alannahkearney.com</website>
+        </author>
+		<author>
 			<name github="symphonycms" symphony="team">Symphony Team</name>
 			<website>https://www.getsymphony.com/</website>
 		</author>
 	</authors>
 	<releases>
+		<release version="1.6.0" date="2020-12-27" min="2.7.10" max="2.7.x"/>
 		<release version="1.5.4" date="2018-11-05" min="2.3" max="2.x.x">
 			- Fix UI issue with the field's frame (#11)
 		</release>

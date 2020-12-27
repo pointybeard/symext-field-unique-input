@@ -1,0 +1,32 @@
+{
+    "id": "symext-field-unique-input",
+    "name": "Unique Text Input Field",
+    "description": "A field for Symphony CMS that validates and stores YAML formatted data.",
+    "repo": "https://github.com/pointybeard/symext-field-unique-input.git",
+    "homepage": "https://github.com/pointybeard/symext-field-unique-input",
+    "type": [
+        "Utility",
+        "Field"
+    ],
+    "authors": [
+        {
+            "name": "Alannah Kearney",
+            "email": "hi@alannahkearney.com",
+            "homepage": "http://www.alannahkearney.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Symphony Team",
+            "homepage": "https://www.getsymphony.com/",
+            "role": "Developer"
+        }
+    ],
+    "releases": [
+        {
+            "version": "1.6.0",
+            "date": "2020-12-27",
+            "min": "2.7.10",
+            "max": "2.7.x"
+        }
+    ]
+}
