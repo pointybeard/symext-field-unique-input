@@ -11,11 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-require_once realpath(__DIR__.'/../vendor').'/autoload.php';
-
-use SymphonyPDO;
-
-class UniqueTextInput extends fieldInput
+class fieldUniqueTextInput extends fieldInput
 {
     public function __construct()
     {
